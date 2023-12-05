@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-00fwgw&9h)=b4h*csyk_h%b%w$4-ldrvjo*ag!sj(+3(^xf0&8
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'appservicedjangoad.azurewebsites.net']
+
 
 
 
