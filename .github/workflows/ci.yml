@@ -6,17 +6,19 @@ on:
       - develop
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Clear Actions Cache
+      run: |
+        rm -rf ${{ runner.workspace }}/.actions
+      if: always()
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10
+        python-version: 3.9 
 
     - name: Install dependencies
       run: |
