@@ -15,7 +15,6 @@ def index(request):
                   )
     
 def logout_user(request):
-    
     logout(request)
     return redirect('login')
 
@@ -46,5 +45,10 @@ def signup_page(request):
             user = form.save()
             # auto-login user
             login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)
+            return redirect('home')
     return render(request, 'app/signup.html', context={'form': form})
+
+
+
+def accueil(request):
+    return render(request, 'app/accueil.html')

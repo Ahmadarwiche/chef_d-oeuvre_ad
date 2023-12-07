@@ -25,3 +25,5 @@ EXPOSE 8000
 
 # Lancer la commande pour démarrer l'application Django avec Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "projet.wsgi:application"]
+
+#l'utilisation de 0.0.0.0 signifie qu'il acceptera les connexions provenant de n'importe quelle adresse IP, à condition qu'elles atteignent le port spécifié (8000 dans cet exemple)

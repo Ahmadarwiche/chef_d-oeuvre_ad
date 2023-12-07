@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-00fwgw&9h)=b4h*csyk_h%b%w$4-ldrvjo*ag!sj(+3(^xf0&8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*', 'appservicedjangoad.azurewebsites.net']
@@ -78,13 +78,57 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+#####################################################################################################################
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     },
+    
+#     'prod': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('PGDATABASE', ''),
+#         'USER': os.getenv('PGUSER', ''),
+#         'PASSWORD': os.getenv('PGPASSWORD', ''),
+#         'HOST': os.getenv('PGHOST', ''),
+#         'PORT': os.getenv('PGPORT', ''),
+#     }
+# }
+
+# python manage.py makemigrations --database=prod
+# python manage.py migrate --database=prod
+
+if os.getenv('DJANGO_ENV') == 'development':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+
+# Configuration de la base de données pour la production (PostgreSQL sur Azure)
+elif os.getenv('DJANGO_ENV') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('PGDATABASE', ''),
+            'USER': os.getenv('PGUSER', ''),
+            'PASSWORD': os.getenv('PGPASSWORD', ''),
+            'HOST': os.getenv('PGHOST', ''),
+            'PORT': os.getenv('PGPORT', ''),
+        }
+    }
+else:
+    raise ValueError("DJANGO_ENV doit être 'development' ou 'production'")
+
+#########################################################################################################################################
 
 
 # Password validation
@@ -127,3 +171,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = ["https://*.appservicedjangoad.azurewebsites.net"]
+
