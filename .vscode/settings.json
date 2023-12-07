@@ -1,0 +1,22 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "serverpostgreahmad.postgres.database.azure.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "AhmadDarwiche",
+            "database": "sql",
+            "username": "AhmadDarwiche"
+        },
+        {
+            "previewLimit": 50,
+            "server": "serverpostgreahmad.postgres.database.azure.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "serverpostgreahmad",
+            "database": "postgres",
+            "username": "AhmadDarwiche"
+        }
+    ]
+}
