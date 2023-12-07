@@ -19,12 +19,12 @@ def test_login_page(client):
     
 #############################################################################################################
 
-import pytest
-from django.urls import reverse
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from django.test import Client
-from app import forms
+# import pytest
+# from django.urls import reverse
+# from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate
+# from django.test import Client
+# from app import forms
 
 # @pytest.mark.django_db
 # def test_signup_page(client):
