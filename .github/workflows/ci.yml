@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+               SECRET_KEY: 'notsecret'
+               DJANGO_ENV: 'development'
+               ALLOWED_HOSTS: '*'
+
+
     steps:
     - name: Clear Actions Cache
       run: |
