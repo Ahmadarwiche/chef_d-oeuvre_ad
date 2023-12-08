@@ -7,8 +7,8 @@ on:
     pull_request:
         branches:
         - main
-        paths:
-        - 'projet/**' # Specify the path to the projet directory
+        # paths:
+        # - 'projet/**' # Specify the path to the projet directory
 
 #  jobs definition
 jobs:
@@ -16,7 +16,7 @@ jobs:
   
         runs-on: ubuntu-latest # os for running the job
       
-      
+
         env:
             SECRET_KEY: 'notsecret'
             DJANGO_ENV: 'production'
