@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import os
 
+
 @pytest.mark.django_db
 def test_login_page(client):
     User.objects.create_user(username='rola', password='Rola1992@')
@@ -11,12 +12,14 @@ def test_login_page(client):
     url = reverse('login')
     response = client.post(url, {'username': 'rola', 'password': 'Rola1992@'})
     assert response.status_code == 302  # Redirection après une connexion réussie
-    assert response.url == reverse('home')  # Assurez-vous que la redirection est correcte
+    # Assurez-vous que la redirection est correcte
+    assert response.url == reverse('home')
 
     # Vous pouvez également tester d'autres scénarios, comme la connexion avec des identifiants invalides
     response = client.post(url, {'username': 'rola', 'password': 'Rola1992'})
-    assert response.status_code == 200  # La page doit être rendue à nouveau après une tentative de connexion infructueuse
-    
+    # La page doit être rendue à nouveau après une tentative de connexion infructueuse
+    assert response.status_code == 200
+
 #############################################################################################################
 
 # import pytest
@@ -38,7 +41,7 @@ def test_login_page(client):
 #         'password1': 'NewUser123@',
 #         'password2': 'NewUser123@'
 #     })
-    
+
 #     # Assurez-vous que l'utilisateur est redirigé après une inscription réussie
 #     assert response.status_code == 302
 #     assert response.url == reverse('home')
@@ -57,7 +60,7 @@ def test_login_page(client):
 #         'password1': 'NewUser123@',
 #         'password2': 'NewUser123@'
 #     })
-    
+
 #     # Assurez-vous que la page de réinscription est rendue avec un message d'erreur
 #     assert response_existing_user.status_code == 200
 #     # assert 'Ce nom d\'utilisateur existe déjà.' in response_existing_user.content.decode()
