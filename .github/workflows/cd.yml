@@ -6,7 +6,7 @@ on:
   # opening a pull request to master and develop branch will be a trigger
     pull_request:
         branches:
-        - develop
+        - main
         paths:
         - 'projet/**' # Specify the path to the projet directory
 
