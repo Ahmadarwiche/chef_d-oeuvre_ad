@@ -4,7 +4,7 @@ name: CD
 # triggers for our workflow
 on:
   # opening a pull request to master and develop branch will be a trigger
-    pull_request:
+    push:
         branches:
           - develop
         paths:
