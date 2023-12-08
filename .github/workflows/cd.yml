@@ -6,9 +6,9 @@ on:
   # opening a pull request to master and develop branch will be a trigger
     pull_request:
         branches:
-        - main
+          - develop
         paths:
-        - 'projet/**' # Specify the path to the projet directory
+          - 'projet/**' # Specify the path to the projet directory
 
 #  jobs definition
 jobs:
@@ -20,11 +20,11 @@ jobs:
             SECRET_KEY: 'notsecret'
             DJANGO_ENV: 'production'
             ALLOWED_HOSTS: '*'
-            NAME: ${{ secrets.PGDATABASE }}
-            USER: ${{ secrets.PGUSER }}
-            PASSWORD: ${{ secrets.PGPASSWORD }}
-            HOST: ${{ secrets.PGHOST }}
-            PORT: ${{ secrets.PGPORT }}
+            # NAME: ${{ secrets.PGDATABASE }}
+            # USER: ${{ secrets.PGUSER }}
+            # PASSWORD: ${{ secrets.PGPASSWORD }}
+            # HOST: ${{ secrets.PGHOST }}
+            # PORT: ${{ secrets.PGPORT }}
 
 
       
